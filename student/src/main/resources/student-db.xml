@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Settings for OTS database -->
+	<bean id="dataSource_DEMO" class="org.springframework.jdbc.datasource.DriverManagerDataSource" primary="true">
+		<qualifier value="dataSource_DEMO"/>
+	    <property name="driverClassName" value="${com.example.demo.dataSource_DEMO.driverClassName}" />
+	    <property name="url" value="${com.example.demo.dataSource_DEMO.url}" />
+	    <property name="username" value="${com.example.demo.dataSource_DEMO.username}" />
+	    <property name="password" value="${com.example.demo.dataSource_DEMO.password}" />
+	    
+	</bean>
+	
+	<bean id="sessionFactory_DEMO" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"  lazy-init="default">
+		<property name="dataSource" ref="dataSource_DEMO" />
+		<property name="annotatedClasses">
+		   <list>
+		   			<value>com.example.demo.student.Employee</value>
+		   
+		   </list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+ 				
+ 
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+</beans>
