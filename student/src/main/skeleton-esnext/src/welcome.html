@@ -1,0 +1,53 @@
+<!-- <template>
+ <div class="row">
+    	  <div class="col-sm-8 mx-auto">
+   
+	        <div class="online-class-form">
+		    	<form>
+		    	 <div class="form-group">
+		     
+		           <div class="row">
+		               <label class="col-4"> name <span class="error">*</span></label>
+		               <div class="error-class col-8">
+		                 <input type="text" name="name" class="form-control" value.bind="student.name & validate" palceholder = "name" />
+		              </div>
+		           </div>
+		      
+		         </div>
+		    	  
+		    	   <div class="form-group">
+			       <div class="row">
+			          <div class="col-12 text-center">
+			            <button class="btn btn-sm btn-primary" type="submit" click.delegate="createStudentFn()" disabled.bind="buttonToggle">  Submit </button>
+			            <button  class="btn btn-sm btn-light" click.delegate="dialogController.cancel()"> Cancel </button>
+			          </div>
+			       </div>
+			      
+			     </div>
+		    	  
+		    	  
+		    	</form>
+	          </div>
+	    	</div>
+  		</div>
+</template> -->
+<template>
+  <section class="au-animate">
+<!--     <h2>${heading}</h2> -->
+    <form role="form" submit.delegate="submit()">
+      <div class="form-group">
+        <label for="fn">name</label>
+        <input type="text" value.bind="student.name" class="form-control" id="fn" placeholder="first name">
+      </div>
+      <div class="form-group">
+        <label for="ln">country</label>
+        <input type="text" value.bind="student.country" class="form-control" id="ln" placeholder="last name">
+      </div>
+      <div class="form-group">
+        <label>Full Name</label>
+        <p class="help-block">${fullName | upper}</p>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </section>
+</template>
