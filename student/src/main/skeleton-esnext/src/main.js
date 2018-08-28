@@ -1,9 +1,14 @@
 import 'bootstrap';
+import 'babel-polyfill';
+
+
 
 export function configure(aurelia) {
-  aurelia.use
+	aurelia.use
     .standardConfiguration()
-    .developmentLogging();
+    .developmentLogging()
+    .plugin('aurelia-configuration')
+   
 
   //Uncomment the line below to enable animation.
   //aurelia.use.plugin('aurelia-animator-css');
@@ -12,5 +17,9 @@ export function configure(aurelia) {
   //Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
   //aurelia.use.plugin('aurelia-html-import-template-loader')
 
-  aurelia.start().then(() => aurelia.setRoot());
+    aurelia.start().then(a => { 
+    	/*	  $('[data-toggle="tooltip"]').tooltip();*/
+    		  let start = a.host.attributes.start.value;
+    		    a.setRoot(start);
+    	  });
 }

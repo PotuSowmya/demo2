@@ -59,4 +59,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDAO.list();
 	}
 
+	@Override
+	public Employee get(String id) {
+		// TODO Auto-generated method stub
+		return employeeDAO.get(id);
+	}
+
 }

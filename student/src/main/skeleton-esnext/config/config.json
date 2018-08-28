@@ -1,0 +1,20 @@
+{
+	"name": "OTS Admin Subscription Package",
+    "version": "0.1",
+    "api": {
+        "endpoint": "",
+        "appPath": "",
+        "module":{
+        	"user":{
+                "getUsers":"/api/student/users"
+               
+             } 
+             }
+   },
+    "development":{
+	    "api": {
+	        "endpoint": "http://localhost:9002"
+	    }
+
+    }
+}

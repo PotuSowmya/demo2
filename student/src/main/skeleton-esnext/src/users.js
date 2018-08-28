@@ -1,64 +1,41 @@
-import {inject} from 'aurelia-framework';
-import {HttpClient} from 'aurelia-fetch-client';
-import 'fetch';
+import {inject, bindable} from "aurelia-framework";
+import {StudentService} from "apiServices/student-service";
 
-let httpClient = new HttpClient();
-export class Users {
-  heading = 'Github Users';
- 
-constructor(){
-	 this.users = [];
-}
- /* constructor(http) {
-    http.configure(config => {
-      config
-        .useStandardConfiguration()
-        .withBaseUrl('http://localhost:7777/api/student/');
-    });
+@inject(StudentService)
 
-    this.http = http;
-  }
-
-  activate() {
-    return this.http.fetch('create')
-      .then(response => response.json())
-      .then(users => this.users = users);
-  }*/
- /* myPostData = {"id":"3",
-	"name":"sss2",
-
-	"country":"India"}
+export class Users{
+ constructor(studentService){
+	
+	 this.studentService = studentService;
 		
-	   postData(myPostData) {
-	      httpClient.fetch('http://localhost:7777/api/student/create', {
-	         method: "POST",
-	         headers: {
-                 'content-type': 'application/json',
-	         },
-	         body: data == null || data == undefined?'':JSON.stringify(data)
-	      })
-			
-	      .then(response => response.json())
-	      .then(data => {
-	         console.log(data);
-	      });
-	   }*/
-  
-  getData() {
-      httpClient.fetch('http://localhost:7777/api/student/get')
-      .then(response => response.json())
-      .then(data => {
-         console.log(data);
-         debugger;
-        
-         this.users=data;
-         console.log("users"+this.users);
-        return  this.users;
-      });
-      debugger;
-     
-      //
-   }
-
-  
+	 this.users = [];
+ }
+ 
+ async getUsersList(){
+		
+	
+		
+		let response = await this.studentService.getUsers();
+		
+		debugger;
+		if(response != null) {
+			debugger;
+			this.showMessage = response.showMessage;
+			if(response.statusCode == 200) {
+				this.rowData= true;
+				
+				 this.users=response.result;
+				 debugger;
+				 console.log("this.users    "+this.users);
+				
+			}
+			else{
+				console.log('student failed failed ');
+			}
+		}
+		
+		else{
+			console.log('student api service call failed failed ');
+		}
+ }
 }

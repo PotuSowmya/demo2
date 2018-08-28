@@ -18,4 +18,6 @@ public interface EmployeeDAO {
 	public Employee update(Employee employee);
 	
 	public List<Employee> list();
+
+	public Employee get(String id);
 }

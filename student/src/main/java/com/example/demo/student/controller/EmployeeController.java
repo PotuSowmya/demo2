@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -111,7 +112,7 @@ public class EmployeeController {
 		} 
 	}
 
-	@RequestMapping(value = "/get", method = RequestMethod.GET)
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<ResponseJson> update() {
 		log.debug("create()....................");
 
@@ -124,9 +125,45 @@ public class EmployeeController {
 			responseJson.setStatus("fail");
 
 			List<Employee> employee = employeeService.list();
+			
 
 			if (employee == null) {
 				responseJson.setShowMessage("update Failed");
+				return new ResponseEntity<>(responseJson, HttpStatus.OK);
+
+			}
+          
+			responseJson.setStatusCode(200);
+			responseJson.setStatus("success");
+			responseJson.setShowMessage("list Success");
+			responseJson.setResult(employee);
+			return new ResponseEntity<>(responseJson, HttpStatus.OK);
+
+		
+		} catch (Exception e) {
+			log.error("list()....................exception:" + e.getMessage());
+			e.printStackTrace();
+			responseJson.setShowMessage("get failed");
+			return new ResponseEntity<>(responseJson, HttpStatus.OK);
+		}
+	}
+	
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+	public ResponseEntity<ResponseJson> get(@PathVariable String id) {
+		log.debug("get()....................");
+
+		ResponseJson responseJson = new ResponseJson();
+
+		try {
+
+			responseJson.setStatusCode(400);
+			responseJson.setResult(null);
+			responseJson.setStatus("fail");
+
+			Employee employee = employeeService.get(id);
+
+			if (employee == null) {
+				responseJson.setShowMessage("get Failed");
 				return new ResponseEntity<>(responseJson, HttpStatus.OK);
 
 			}

@@ -100,5 +100,30 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 		}
 	}
+	
+	@Override
+	public Employee get(String id) {
+		log.debug("get()..................");
+
+		Session session = this.sessionFactory.getCurrentSession();
+
+		try {
+
+			if (id == null )
+				return null;
+
+			String sql = "From Employee OC where OC.id=:id";
+
+			Query query = session.createQuery(sql).setParameter("id", id);
+
+			return (Employee) query.uniqueResult();
+
+		} catch (Exception e) {
+			log.error("get()....................exception:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		}
+
+	}
 
 }

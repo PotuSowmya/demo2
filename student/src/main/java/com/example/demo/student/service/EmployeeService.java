@@ -18,4 +18,6 @@ public interface EmployeeService {
 	public Employee update(Employee employee) throws Exception;
 	
 	public List<Employee> list();
+	
+	public Employee get(String id);
 }
