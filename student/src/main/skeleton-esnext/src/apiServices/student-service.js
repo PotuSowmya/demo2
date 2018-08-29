@@ -11,31 +11,31 @@ export class StudentService{
 			console.log("Student API services");
 		}
 		
-		/*async create(data){
+		async create(data){
 		 		
 			debugger;
-			var response = await this.apiServiceUtil.fetch('api.module.branches.create', data  , 'post', true);
+			var response = await this.apiServiceUtil.fetch('api.module.user.create', data  , 'post', true);
 			return response;
 		}
 		
 		async update(data){
 			debugger;
-			var response = await this.apiServiceUtil.fetch('api.module.branches.update', data  , 'post', true);
+			var response = await this.apiServiceUtil.fetch('api.module.user.update', data  , 'post', true);
 			return response;
 		}
 		
-		async getList(gridOptions){
+		/*async getList(gridOptions){
 			debugger;
 			var response = await this.apiServiceUtil.fetch('api.module.branches.list', gridOptions  , 'post', true);
 			return response;
-		}*/
+		}
 		
 		async getDataById(branchId){
 			debugger;
 			var response = await this.apiServiceUtil.fetch('api.module.user.get', branchId  , 'get', true);
 			
 			return response;
-		}
+		}*/
 		
 		async getUsers(){
 			debugger;

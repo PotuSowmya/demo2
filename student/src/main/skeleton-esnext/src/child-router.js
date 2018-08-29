@@ -1,13 +1,13 @@
 export class ChildRouter {
-  heading = 'Child Router';
+  //heading = 'Child Router';
 
-  configureRouter(config, router) {
+ /* configureRouter(config, router) {
     config.map([
-      { route: ['', 'welcome'], name: 'welcome',       moduleId: 'welcome',       nav: true, title: 'Welcome' },
-      { route: 'users',         name: 'users',         moduleId: 'users',         nav: true, title: 'Github Users' },
-      { route: 'child-router',  name: 'child-router',  moduleId: 'child-router',  nav: true, title: 'Child Router' }
+      { route: 'userList', href:'userList', name: 'userList', moduleId: 'user/list/users',nav: false,title:'List' },
+      { route: 'userCreate', name: 'userCreate', moduleId: 'user/createOrUpdate/user-create-update', title:'Create'},
+      { route: 'userUpdate/:id?', href:'userUpdate', name: 'userUpdate', moduleId: 'user/createOrUpdate/user-create-update', title:'Update'}
     ]);
 
     this.router = router;
-  }
+  }*/
 }

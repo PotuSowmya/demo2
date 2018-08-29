@@ -6,6 +6,8 @@
         "appPath": "",
         "module":{
         	"user":{
+        	 "create":"/api/student/create",
+        	  "update":"/api/student/update",
                 "getUsers":"/api/student/users"
                
              } 
