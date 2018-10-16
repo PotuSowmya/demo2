@@ -10,7 +10,7 @@
 					<span class="caption"> User View </span>
 				</div>
 				 <div class="btn-group">
-				    <a route-href="route: userUpdate; params.bind:{id:user.id}" class="btn btn-light btn-sm" title="Update Instruction" > <i class="fa fa-pencil fa-fw"></i> Update </a>
+				    <a route-href="route: userUpdate; params.bind:{id:userData.id}" class="btn btn-light btn-sm" title="Update User" > <i class="fa fa-pencil fa-fw"></i> Update </a>
 					<a route-href="route: userList" class="btn btn-primary btn-sm" title="Back To List" > <i class="fa fa-reply-all fa-fw"></i>  </a>
 		        </div> 
 			</div>
@@ -19,46 +19,29 @@
 		<div class="box-body">
 		
 		
-		   <div class="row" with.bind="instructionData">
+		   <div class="row" with.bind="userData">
 		      <div class="col-sm-4">
 		      
 		         <div class="view-item">
 		           <div class="item-name">
-		            Code
+		            name
 		           </div>
 		           <div class="item-value">
-		             ${code}
+		             ${name}
 		           </div>
 		         
 		         </div>
 		          <div class="view-item">
 		           <div class="item-name">
-		            Name
+		            country
 		           </div>
 		           <div class="item-value">
-		             ${name}
+		             ${country}
 		           </div>
 		         </div>
-		          <div class="view-item">
-		           <div class="item-name">
-		            Status
-		           </div>
-		           <div class="item-value">
-		            <span class="${status | statusChange}"> ${status} </span> 
-		           </div>
-		         </div>
-		      
+		         
 		      </div>
-		      <div class="col-sm-12">
-		      	 <div class="">
-		           <div class="text-secondary margin top-20">
-		            	<h5>Content</h5>
-		           </div>
-		           <div class="">
-		             <div innerhtml.bind="content"></div>
-		           </div>
-		         </div>
-		      </div>
+		     
 		   </div>
 		
 		      

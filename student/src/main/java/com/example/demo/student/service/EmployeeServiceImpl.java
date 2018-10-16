@@ -4,7 +4,6 @@
 package com.example.demo.student.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,23 +34,38 @@ public class EmployeeServiceImpl implements EmployeeService {
 		/*String id = UUID.randomUUID().toString();
 
 		employee.setId(id);*/
-
-		return employeeDAO.create(employee);
+		
+		String name=employee.getName();
+		String country=employee.getCountry();
+		
+		if (name != null && country != null) {
+			return employeeDAO.create(employee);
+		} else {
+			return null;
+		}
 	}
-
 	@Transactional(readOnly = false)
 	@Override
 	public Employee update(Employee employee) throws Exception {
 		log.debug("update()..............");
 		
-		
-		
 		String id = employee.getId();
-
+		
 		if (id == null)
-			throw new Exception("update failed");
+			throw new Exception("id is null");
 
-		return employeeDAO.update(employee);
+		Employee dbemployeeObj=get(id);
+		
+		if (dbemployeeObj == null)
+			throw new Exception("dbemployeeObj is null");
+		
+		if(employee.getName()!=null&&!employee.getName().equalsIgnoreCase("")&&!employee.getName().equalsIgnoreCase(dbemployeeObj.getName()))
+			dbemployeeObj.setName(employee.getName());
+		
+		if(employee.getCountry()!=null&&!employee.getCountry().equalsIgnoreCase("")&&!employee.getCountry().equalsIgnoreCase(dbemployeeObj.getCountry()))
+			dbemployeeObj.setCountry(employee.getCountry());
+		
+		return employeeDAO.update(dbemployeeObj);
 	}
 
 	@Override

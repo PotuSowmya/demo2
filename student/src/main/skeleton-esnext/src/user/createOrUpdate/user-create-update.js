@@ -1,67 +1,106 @@
-import {inject, bindable} from "aurelia-framework";
+import {bindable} from "aurelia-framework";
+import {inject} from 'aurelia-dependency-injection';
 import {StudentService} from "apiServices/student-service";
 import {Router} from 'aurelia-router';
-@inject(Router,StudentService)
-export class UserCreateUpdate{
-	
-  constructor(router,studentService){
-			
-		 this.studentService = studentService;
-			this.router=router;
-			this.user  = {};
-			this.rowData= true;
-			this.routeNavigate = null;
-  }
-  activate(params){
-		debugger;
-		if(params != null){
-			debugger;
-			this.user.id = params.id;
-			//this.getInstrData(this.user.id);
-		}else{
-			this.user = {};
-		}
-		
-	}
-  async createOrUpdateUserFn(){
-		
-		 debugger;
-			
-				//this.disableButton();
-				let response  = null;
-				
-				/*if(this.user.id){
-					response = await this.studentService.update(this.user);
-					//this.routeNavigate = 'UPDATE';
-				}else{*/
-					response = await this.studentService.create(this.user);
-					//this.routeNavigate = 'CREATE';
-				//}
+import {DialogController} from 'aurelia-dialog';
 
-				debugger;
+
+
+@inject(Router,StudentService,DialogController)
+export class UserCreateUpdate{
+	 
+  constructor(router,studentService,dialogController){
+	  this.dialogController = dialogController;
+	  this.studentService = studentService;
+	  this.router=router;
+	  this.user  = {};
+	  this.rowData= true;
+	  this.routeNavigate = null;
+  }
+  activate(user){
+		debugger;
+			
+		this.user = user;
+		
+  }
+  
+  async createOrUpdateUserFn(){
+		debugger;
+			let response  = null;
+			response = await this.studentService.create(this.user);
+			debugger;
 				if(response != null) {
 	    			this.showMessage = response.showMessage;
 		    		if(response.statusCode == 200){
-		    			console.log("failed");
-		    			/*
-		    			if(this.routeNavigate == 'CREATE'){
-		    				this.router.navigate('userList');
-		    			}else{
-		    				this.router.navigate('instructionView/'+this.user.id);
-		    			}*/
+		    			console.log("success");
+		    			this.dialogController.ok(response);
+		    			this.enableButton();
 		    			
 		    			debugger;
 		    		}
 		    		else {
-						//this.alertBind = true;
- 					/*this.resultOfAlert = false;
- 					setTimeout(() => this.alertBind = false, 2000);*/
+						this.alertBind = true;
+ 					   this.resultOfAlert = false;
+ 					//setTimeout(() => this.alertBind = false, 2000);*/
 
-		    			//this.enableButton();
+		    			this.enableButton();
 		    			console.log("failed");
 			    	}
 		    	}
+   }
+  
+  /*async getUserData(instructionId){
+		debugger;
+		let response = await this.studentService.getById(instructionId);
+		debugger;
+		if(response != null){
+			debugger;
+			if(response.statusCode == 200){
+				debugger;
+				this.testInstructions = response.result;
+              console.log(this.testInstructions);	
+              
+			}else{
+				debugger;
+				console.log("response null");	
+			}
 			
-		 
-	  }
+			
+		}else{
+			
+		}
+		
+	}
+  
+  async getUsersList(){
+		
+		let response = await this.studentService.getUsers();
+			
+			debugger;
+			if(response != null) {
+				debugger;
+				this.showMessage = response.showMessage;
+				if(response.statusCode == 200) {
+					this.rowData= true;
+					
+					 this.users=response.result;
+					 debugger;
+					 console.log("this.users    "+this.users);
+						
+					 this.rowData= true;
+				}
+				else{
+					console.log('student failed failed ');
+					this.rowData= false;
+				}
+			}
+			
+			else{
+				console.log('student api service call failed failed ');
+				this.rowData= false;
+			}
+	 }*/
+	 
+  
 }
+

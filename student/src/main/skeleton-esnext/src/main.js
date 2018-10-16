@@ -6,8 +6,11 @@ import 'babel-polyfill';
 export function configure(aurelia) {
 	aurelia.use
     .standardConfiguration()
+    .plugin('aurelia-validation')
     .developmentLogging()
     .plugin('aurelia-configuration')
+    .plugin('aurelia-dialog');
+    
    
 
   //Uncomment the line below to enable animation.

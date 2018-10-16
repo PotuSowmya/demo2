@@ -1,5 +1,5 @@
 {
-	"name": "OTS Admin Subscription Package",
+	"name": "student",
     "version": "0.1",
     "api": {
         "endpoint": "",
@@ -8,7 +8,8 @@
         	"user":{
         	 "create":"/api/student/create",
         	  "update":"/api/student/update",
-                "getUsers":"/api/student/users"
+                "getUsers":"/api/student/users",
+                "getById":"/api/student/get"
                
              } 
              }

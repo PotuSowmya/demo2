@@ -148,7 +148,7 @@ public class EmployeeController {
 		}
 	}
 	
-	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	public ResponseEntity<ResponseJson> get(@PathVariable String id) {
 		log.debug("get()....................");
 

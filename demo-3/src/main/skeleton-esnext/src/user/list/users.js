@@ -1,20 +1,18 @@
 import {inject, bindable} from "aurelia-framework";
 import {StudentService} from "apiServices/student-service";
+import {Router} from 'aurelia-router';
 
-
-@inject(StudentService)
+@inject(StudentService,Router)
 
 export class Users{
- constructor(studentService){
+ constructor(studentService,router){
 	
 	 this.studentService = studentService;
-	 //this.router=router;	
+	 this.router=router;	
 	 this.users = [];
 	 this.rowData= true;
 	
  }
- 
-
  
  async getUsersList(){
 		
@@ -45,9 +43,6 @@ export class Users{
 		}
  }
  
- 
- 
-
  
  
 }

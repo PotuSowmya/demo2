@@ -173,3 +173,13 @@ div.au-stagger {
     opacity: 1;
   }
 }
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 8px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}

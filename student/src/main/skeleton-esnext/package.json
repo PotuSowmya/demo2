@@ -67,6 +67,7 @@
       "aurelia-animator-css": "npm:aurelia-animator-css@^1.0.0",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0",
       "aurelia-configuration": "npm:aurelia-configuration@^1.0.17",
+      "aurelia-dialog": "npm:aurelia-dialog@^2.0.0-rc.3",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0",
       "aurelia-history-browser": "npm:aurelia-history-browser@^1.0.0",
@@ -79,6 +80,7 @@
       "aurelia-templating-binding": "npm:aurelia-templating-binding@^1.0.0",
       "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.0.0",
       "aurelia-templating-router": "npm:aurelia-templating-router@^1.0.0",
+      "aurelia-validation": "npm:aurelia-validation@^1.2.3",
       "babel-polyfill": "npm:babel-polyfill@^6.26.0",
       "bluebird": "npm:bluebird@3.4.1",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
@@ -90,6 +92,8 @@
     "devDependencies": {}
   },
   "dependencies": {
+    "aurelia-binding": "^2.1.5",
+    "aurelia-validation": "^1.2.3",
     "babel-polyfill": "^6.26.0"
   }
 }

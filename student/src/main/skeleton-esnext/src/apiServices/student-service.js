@@ -28,14 +28,14 @@ export class StudentService{
 			debugger;
 			var response = await this.apiServiceUtil.fetch('api.module.branches.list', gridOptions  , 'post', true);
 			return response;
-		}
+		}*/
 		
-		async getDataById(branchId){
+		async getById(id){
 			debugger;
-			var response = await this.apiServiceUtil.fetch('api.module.user.get', branchId  , 'get', true);
+			var response = await this.apiServiceUtil.fetch('api.module.user.get', id  , 'get', true);
 			
 			return response;
-		}*/
+		}
 		
 		async getUsers(){
 			debugger;

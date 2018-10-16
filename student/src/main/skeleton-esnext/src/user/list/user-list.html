@@ -1,0 +1,48 @@
+<template>
+<div class="box">
+	<div class="box-header">
+		<div class="flex-container">
+			<div class="box-title">
+				<span class="caption">User</span>
+			</div>
+			<div class="btn-group" role="group">
+				<button click.delegate="createUser()" class="btn btn-light btn-sm" title="Create User" ></i> Add </button>
+	        </div>	
+		</div>
+	</div>
+<div  if.bind="users.length != 0">
+       
+        <div class="student-sub-list">
+			<table class="table table-striped">
+					<thead>
+						<tr>
+						    <th> Name</th>
+						    <th>country</th>
+						</tr>
+					</thead>
+					<tbody>  
+						<tr repeat.for="user of users" with.bind="user">
+										
+							<td> <span>${name ? name : '--'}</span> </td>
+							<td> <span>${country ? country : '--'}</span> </td>
+										
+						 </tr>
+
+					</tbody>
+			</table>
+	    </div>
+       
+ </div>
+
+<div class="text-center" if.bind="users.length == 0">
+	       <div class="empty-list">
+	         
+	          <h5 class="empty-list-msg"> Online Topic List Empty
+	          	<a click.delegate="createUser()" title="Create User"> Add </a>
+	          </h5>
+	           <br />
+	       </div>
+	    </div>
+	    </div>
+
+</template>
