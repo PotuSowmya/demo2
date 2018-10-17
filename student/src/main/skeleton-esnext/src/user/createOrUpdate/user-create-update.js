@@ -3,14 +3,17 @@ import {inject} from 'aurelia-dependency-injection';
 import {StudentService} from "apiServices/student-service";
 import {Router} from 'aurelia-router';
 import {DialogController} from 'aurelia-dialog';
+import {BootstrapFormRenderer} from '../../bootstrap-form-renderer';
+import {ValidationControllerFactory, ValidationController, ValidationRules, validateTrigger} from 'aurelia-validation';
 
-
-
-@inject(Router,StudentService,DialogController)
+@inject(Router,StudentService,DialogController,ValidationControllerFactory)
 export class UserCreateUpdate{
 	 
-  constructor(router,studentService,dialogController){
+  constructor(router,studentService,dialogController,controllerFactory){
+	  
 	  this.dialogController = dialogController;
+	  this.controller = controllerFactory.createForCurrentScope();
+	  this.controller.addRenderer(new BootstrapFormRenderer());
 	  this.studentService = studentService;
 	  this.router=router;
 	  this.user  = {};
@@ -25,6 +28,15 @@ export class UserCreateUpdate{
   }
   
   async createOrUpdateUserFn(){
+	  
+	  ValidationRules
+		 .ensure('name').required()
+		 .ensure('country').required()
+		 .on(this.user);
+		debugger;
+		  let validationResult = await this.controller.validate();
+		debugger;
+			if(validationResult.valid){
 		debugger;
 			let response  = null;
 			response = await this.studentService.create(this.user);
@@ -47,6 +59,7 @@ export class UserCreateUpdate{
 		    			console.log("failed");
 			    	}
 		    	}
+			}
    }
   
   /*async getUserData(instructionId){

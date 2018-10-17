@@ -183,3 +183,27 @@ div.au-stagger {
     font-size: 35px;
     color: #36A0FF;
 }
+.error-class{
+	
+	   .form-text{
+		    color:rgba($red,0.8);
+		  }
+	 
+	  &.has-warning{
+		  .form-control{
+		    border:2px solid rgba($red,0.8) !important;
+		  }
+		   .form-text{
+		    color:rgba($red,0.8) !important;
+		  }
+	  }
+	  &.has-success{
+		  .form-control{
+		    border:2px solid rgba($green,0.8) !important;
+		  }
+		   .form-text{
+		    color:rgba($green,0.8);
+		  }
+	  }
+	  
+	}

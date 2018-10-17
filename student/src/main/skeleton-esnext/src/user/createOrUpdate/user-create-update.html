@@ -16,15 +16,17 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center">name:</span>
                             <div class="col-md-8">
-                               <input type="text" name="name" class="form-control" value.bind="user.name " palceholder = "User Name" />
-                                <span class="error"></span>
+                                 <div class="error-class">      
+                               <input type="text" name="name" class="form-control" value.bind="user.name & validate" palceholder = "User Name" />
+                               </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center">country:</span>
                             <div class="col-md-8">
-                                <input type="text" name="country" class="form-control" value.bind="user.country" palceholder = "User Country" />
-                                 <span class="error"></span>
+                            <div class="error-class">      
+                                <input type="text" name="country" class="form-control" value.bind="user.country & validate" palceholder = "User Country" />
+                            </div>
                             </div>
                         </div>
 

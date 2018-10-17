@@ -2,6 +2,7 @@ import {inject, bindable} from "aurelia-framework";
 import {StudentService} from "apiServices/student-service";
 import {Router} from 'aurelia-router';
 import {DialogService} from 'aurelia-dialog';
+import {ValidationControllerFactory, ValidationController, ValidationRules, validateTrigger} from 'aurelia-validation';
 import {UserCreateUpdate} from "user/createOrUpdate/user-create-update";
 @inject(Router,StudentService,DialogService)
 export class userList{
@@ -59,10 +60,13 @@ export class userList{
 		         console.log(response);
 	
 	            if (!response.wasCancelled) {
-	              if(response.output.statusCode == 200) {
+	              if(response.statusCode == 200) {
 	            	  debugger;
 	            	  this.getUsersList();
 	            	  console.log(response.output);
+	              }
+	              else{
+	            	  console.log('create failed ');
 	              }
 	            } else {
 	            	  debugger;
