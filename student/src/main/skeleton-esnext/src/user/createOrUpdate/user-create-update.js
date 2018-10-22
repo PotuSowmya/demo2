@@ -39,7 +39,12 @@ export class UserCreateUpdate{
 			if(validationResult.valid){
 		debugger;
 			let response  = null;
-			response = await this.studentService.create(this.user);
+			if(this.user.id){
+				response = await this.studentService.update(this.user);
+			}
+			else{
+			    response = await this.studentService.create(this.user);
+			}
 			debugger;
 				if(response != null) {
 	    			this.showMessage = response.showMessage;

@@ -77,4 +77,27 @@ export class userList{
 	       });
 
 	}
+ 
+ updateUser(user){
+		debugger;
+		this.dialogService.open({viewModel: UserCreateUpdate, model: user }).then(response => {
+			 console.log(response);
+
+	            if (!response.wasCancelled) {
+	              if(response.statusCode == 200) {
+	            	  debugger;
+	            	  this.getUsersList();
+	            	  console.log(response.output);
+	              }
+	              else{
+	            	  console.log('update failed ');
+	              }
+	            } else {
+	            	  debugger;
+	            	console.log('Confirmation Cancelled');
+	            	this.getUsersList();
+	            }
+	            
+	       });
+}
 }
